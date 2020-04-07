@@ -39,17 +39,20 @@ const genresList = {
   "19": "Western"
 }
 
+dataPanel.addEventListener('click', event => {
+  console.log(event.target)
+})
 // 右方電影頁面顯示
 function moviesPage(data) {
   let htmlContent = ''
   data.forEach(function (item) {
     let tag = ''
-    item.genres.forEach(function (item) {
-      tag += `<span class="badge badge-${item}" data-id="${item}">
+    item.genres.forEach(function (item, index) {
+      tag += `<span class="badge badge-${index}" data-id="${item}">
         ${genresList[item]}</span>`
     })
     htmlContent += `
-        <div class="col-4">
+        <div class="col-6 col-md-4 col-lg-3">
           <div class="card">
             <img class="card-img-top" src="${posterUrl}${item.image}">
             <div class="card-body movie-item-body">
@@ -61,12 +64,18 @@ function moviesPage(data) {
   dataPanel.innerHTML = htmlContent
 }
 
+function noMovieData() {
+  let htmlContent = ''
+  htmlContent += `<h3>No Movie</h3>`
+  dataPanel.innerHTML = htmlContent
+}
+
 // 左側電影分類清單
 function genresListPage() {
   let genresValues = Object.values(genresList)
   genresValues.map((genre, index) => {
-    let htmlContent = `<li class="nav-item bg-light" >
-  <a class="nav-link" data-id="${index + 1}" data-toggle="pill" href="#">${genre}</a></li > `
+    let htmlContent = `<li class="nav-item" >
+  <a class="nav-link" data-id="${index + 1}" data-toggle="dropdown" href="#">${genre}</a></li > `
     genresPanel.innerHTML += htmlContent
   })
 }
@@ -82,7 +91,11 @@ genresPanel.addEventListener('click', event => {
   genresPageData = data.filter(item =>
     item.genres.includes(Number(event.target.dataset.id))
   )
-  moviesPage(genresPageData)
+  if (genresPageData.length > 0) {
+    moviesPage(genresPageData)
+  } else {
+    noMovieData()
+  }
 })
 
 

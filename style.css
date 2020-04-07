@@ -1,34 +1,27 @@
-/* * {
-  border: 0.1px solid pink;
-} */
-
+.badge-0 {
+  background-color: #FEF2F2;
+}
 .badge-1 {
-  background-color: rgb(230, 225, 250);
+  background-color: #FEF9F2;
 }
 .badge-2 {
-  background-color: rgb(225, 244, 250);
+  background-color: #FDFEF2;
 }
 .badge-3 {
-  background-color: rgb(234, 250, 225);
+  background-color: #F5FEF2;
 }
 .badge-4 {
-  background-color: rgb(241, 250, 224);
+  background-color: #F2FAFE;
 }
 .badge-5 {
-  background-color: rgb(250, 231, 225);
+  background-color: #F5F2FE;
 }
-.badge-6 {
-  background-color: rgb(250, 225, 233);
+
+.contenter {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
 }
-.badge-7 {
-  background-color: rgb(244, 250, 225);
-}
-.badge-8 {
-  background-color: rgb(247, 225, 250);
-}
-.badge-9 {
-  background-color: rgb(250, 233, 225);
-}
-.badge-10 {
-  background-color: rgb(248, 250, 225);
+#data-panel {
+  margin: 30px;
 }
